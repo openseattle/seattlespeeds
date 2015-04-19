@@ -2,11 +2,12 @@ window.addEventListener('load', function () {
   startup();
 }, false);
 
+var hexLayer, map;
 var startup = function () {
   // Create the map
   var center = [47.56029039903832,-122.33809844970702];
   var zoom = 10;
-  var map = L.map('map').setView(center, zoom);
+  map = L.map('map').setView(center, zoom);
 
   var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 	  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

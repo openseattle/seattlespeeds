@@ -18,6 +18,17 @@ header h1 {
   font-weight: 100;
 }
 
+section#test {
+  position: fixed;
+  bottom: 30%;
+  padding-left: 100px;
+  z-index: 2;
+}
+
+section#test button {
+  padding: 35px 50px;
+}
+
 section#map-sec {
   position: absolute;
   width: 100%;
