@@ -23,6 +23,7 @@
     "url": "https://github.com/codeforseattle/seanetmap/issues"
   },
   "dependencies": {
+    "compression": "^1.4.3",
     "express": "^4.12.3"
   }
 }
