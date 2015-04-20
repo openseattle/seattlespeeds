@@ -22,6 +22,17 @@ var startup = function () {
 
   // Global overlay layer variables
   setHexLayer(2015, 3, 'download_median', 'low', 'new');
+
+  // NDT test client.
+  var server = "ndt.iupui.mlab1.nuq0t.measurement-lab.org";
+  var port = "3001";
+  var path = "/ndt_protocol";
+  var NDT_meter, NDT_client;
+  NDT_meter = new NDTmeter('#testsvg');
+  NDT_client = new NDTjs(server, port, path, NDT_meter, 1000);
+  NDT_meter.meter.on("click", function () {
+    NDT_client.startTest();
+  });
 };
 
 function updateLayers(e, mode) {
