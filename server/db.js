@@ -19,18 +19,30 @@ module.exports = {
     dbConnection.close();
   },
 
-  saveTestResult: function (resultData, callback) {
+  saveTestResult: function (testData, ipAddress, callback) {
     dbConnection.serialize(function() {
-      var resultText = JSON.stringify(resultData);
-      var stmt = dbConnection.prepare('INSERT INTO test_results (json_data) VALUES (?)');
+      var testDataStr = JSON.stringify(testData);
 
-      stmt.run(resultText, callback);
+      var sql = 'INSERT INTO test_results (json_data, ip_address, created_at) ' +
+        'VALUES ($json_data, $ip_address, $created_at)';
+
+      var values = {
+        $json_data: testDataStr,
+        $ip_address: ipAddress,
+        $created_at: new Date().toISOString()
+      };
+
+      var statement = dbConnection.prepare(sql);
+
+      statement.run(values, callback);
     });
   },
 
+  // Gets all test results
   getTestResults: function (callback) {
     dbConnection.serialize(function() {
-      dbConnection.all('SELECT json_data FROM test_results', function(err, rows) {
+      var sql = 'SELECT json_data as results, created_at, ip_address FROM test_results ORDER BY created_at desc';
+      dbConnection.all(sql, function(err, rows) {
         if (err) {
           return callback(err);
         }

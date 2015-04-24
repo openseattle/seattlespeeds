@@ -147,6 +147,17 @@ NDTmeter.prototype.onfinish = function (passed_results) {
         'MinRTT': 'Latency'
     };
 
+    // Kick off async save process for results
+    // WARNING: This assumes `$ / jQuery` is available in the global scope.
+    console.log('saving results to server')
+    $.post('/test_results', passed_results)
+        .done(function () {
+            console.log('saving results success!');
+        })
+        .fail(function (err) {
+            console.error('saving results failed!', err);
+        });
+
     for (metric_name in results_to_display) {
         if (results_to_display.hasOwnProperty(metric_name)  &&
                 passed_results.hasOwnProperty(metric_name)) {

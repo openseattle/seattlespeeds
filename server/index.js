@@ -14,6 +14,10 @@ app.use(morgan('combined'));
 app.use(compression());
 app.use(bodyParser());
 
+// TODO: If behind proxy like nginx, enable trust proxy:
+// http://expressjs.com/guide/behind-proxies.html
+// app.enable('trust proxy')
+
 var index = fs.readFileSync(STATIC_DIR + '/index.html');
 app.get('/', function (req, res) {
   res.end(index);
@@ -25,26 +29,37 @@ var server = app.listen(8000, function () {
   var host = server.address().address;
   var port = server.address().port;
 
-  console.log('Seanetmap app listening at http://%s:%s', host, port);
+  console.log('SeaNetMap app listening at http://%s:%s', host, port);
 });
 
+// Endpoint for saving test results
 app.post('/test_results', function (req, res) {
-  db.saveTestResult(req.body, function (err) {
+  db.saveTestResult(req.body, req.ip, function (err, data) {
+
     if (err) {
       return res.status(500).send(err);
     }
+
     return res.status(200).end();
   });
 });
 
+// Endpoint for getting **all of the test results**
 app.get('/test_results', function (req, res) {
   db.getTestResults(function (err, rows) {
+
     if (err) {
       return res.status(500).send(err);
     }
-    var result = rows.map(function (row) {
-      return row.json_data;
+
+    var response = rows.map(function (row) {
+      return {
+        results: JSON.parse(row.results),
+        ip_address: row.ip_address,
+        created_at: row.created_at
+      }
     });
-    return res.send(result);
+
+    return res.send(response);
   });
 });

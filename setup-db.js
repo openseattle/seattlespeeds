@@ -7,6 +7,9 @@ var fs = require('fs');
 console.log('Creating empty sqlite database file at ' + config.sqlite.filePath);
 fs.writeFileSync(config.sqlite.filePath, '');
 
-dbConnection.run('CREATE TABLE test_results (json_data TEXT)');
+// ip address
+// created_at
+
+dbConnection.run('CREATE TABLE test_results (json_data TEXT, ip_address TEXT, created_at TEXT)');
 
 console.log('sqlite db schema created\n');
