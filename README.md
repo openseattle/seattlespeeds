@@ -7,9 +7,11 @@ These instructions assume that [Node.js and npm](http://blog.nodeknockout.com/po
 From the command line
 - `git clone` the repo: https://github.com/codeforseattle/seanetmap.git
 - `cd` into the repo just copied
-- `npm install` to intall all of the necessary dependencies.
-- `node index.js` to start the Node.js server 
-- A new window should have been prompted on your web browser, showing you the SEANetMap. 
+- `npm install` to install all of the necessary dependencies.
+- `./setup-db.js` to create a sqlite database in `db/`
+- `node server` to start the Node.js server
+- `open http://localhost:8000`
+- A new window should have been opened on your web browser, showing you the SEANetMap.
 
 ## More info
 Check [the wiki](https://github.com/codeforseattle/seanetmap/wiki) for lots more info.
