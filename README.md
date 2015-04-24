@@ -1,19 +1,15 @@
-# seanetmap
+# SEANetMap
 Broadband Comparison Tool for Seattle
 
-Prerequisites:
+## Getting Started
+Have Node and NPM installed on your computer.
 
-- Have Node and NPM installed on your computer.
+From the command line
+- `git clone` the repo: https://github.com/codeforseattle/seanetmap.git
+- `cd` into the repo just copied
+- `npm install` to intall all of the necessary dependencies.
+- `node index.js` to start the Node.js server 
+- A new window should have been prompted on your web browser, showing you the SEANetMap. 
 
-
-Getting Started, run the following commande in your Terminal.
-
-- git clone https://github.com/codeforseattle/seanetmap.git
-- Then cd into the repo locally on your computer. EXP Downloads/seanetmap/
-- Then run "npm install" to intall all of the necessary dependencies associated with this repo.
-- Finally start the Node server by running the command "node index.js"
-- A new window should have been prompted on your web browser, showing you the Seanetmap. Now using your preferred ide start writing some code!
-
-Additional resources.
-
--  https://etherpad.net/p/Build_a_Broadband_map_for_Seattle
+## More info
+Check [the wiki](https://github.com/codeforseattle/seanetmap/wiki) for lots more info,
