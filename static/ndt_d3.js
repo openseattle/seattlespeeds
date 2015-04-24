@@ -30,7 +30,7 @@ function NDTmeter(body_element) {
         'finished_s2c': 'Finished Download',
         'finished_c2s': 'Finished Upload',
         'preparing_meta': 'Preparing Metadata',
-        'running_meta': 'Sending Metadata',
+        'running_meta': 'Sendding Metadata',
         'finished_meta': 'Finished Metadata',
         'finished_all': 'Run Again'
 
@@ -63,17 +63,17 @@ NDTmeter.prototype.create = function () {
         .append("linearGradient")
         .attr("id", "gradient")
         .attr("gradientUnits", "userSpaceOnUse");
+        
 
     gradient
         .append("stop")
         .attr("offset", "0")
-        .attr("stop-color", "#FF8000");
+        .attr("stop-color", "##");
     gradient
         .append("stop")
         .attr("offset", "0.5")
-        .attr("stop-color", "#FF8000");
-    gradient
-        .append
+        .attr("stop-color", "##");
+
 
 
     this.arc = d3.svg.arc()
@@ -121,6 +121,7 @@ NDTmeter.prototype.onstatechange = function (returned_message) {
     this.state = returned_message;
     this.time_switched = new Date().getTime();
     this.update_display(this.NDT_STATUS_LABELS[returned_message], '');
+    
 };
 
 NDTmeter.prototype.onprogress = function (returned_message, passedResults) {
