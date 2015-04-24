@@ -23,8 +23,10 @@
     "url": "https://github.com/codeforseattle/seanetmap/issues"
   },
   "dependencies": {
+    "body-parser": "^1.12.3",
     "compression": "^1.4.3",
     "express": "^4.12.3",
-    "morgan": "^1.5.2"
+    "morgan": "^1.5.2",
+    "sqlite3": "^3.0.5"
   }
 }

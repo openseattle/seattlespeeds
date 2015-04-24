@@ -9,6 +9,7 @@ function NDTmeter(body_element) {
     this.state = undefined;
     this.body_element = body_element;
     this.time_switched = undefined;
+    // this.fill = undefined;
 
     this.url_path = '/ndt_protocol';
     this.server_port = 3001;
@@ -32,6 +33,7 @@ function NDTmeter(body_element) {
         'running_meta': 'Sending Metadata',
         'finished_meta': 'Finished Metadata',
         'finished_all': 'Run Again'
+
     };
 
     this.create();
@@ -65,11 +67,14 @@ NDTmeter.prototype.create = function () {
     gradient
         .append("stop")
         .attr("offset", "0")
-        .attr("stop-color", "#ABE5CC");
+        .attr("stop-color", "#FF8000");
     gradient
         .append("stop")
         .attr("offset", "0.5")
-        .attr("stop-color", "#90C1AC");
+        .attr("stop-color", "#FF8000");
+    gradient
+        .append
+
 
     this.arc = d3.svg.arc()
         .startAngle(0)
@@ -146,6 +151,17 @@ NDTmeter.prototype.onfinish = function (passed_results) {
         'c2sRate': 'Upload',
         'MinRTT': 'Latency'
     };
+
+    // Kick off async save process for results
+    // WARNING: This assumes `$ / jQuery` is available in the global scope.
+    console.log('saving results to server')
+    $.post('/test_results', passed_results)
+        .done(function () {
+            console.log('saving results success!');
+        })
+        .fail(function (err) {
+            console.error('saving results failed!', err);
+        });
 
     for (metric_name in results_to_display) {
         if (results_to_display.hasOwnProperty(metric_name)  &&
@@ -248,3 +264,5 @@ NDTmeter.prototype.meter_movement = function () {
 
     return false;
 };
+
+
