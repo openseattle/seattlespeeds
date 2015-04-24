@@ -9,9 +9,15 @@ var app = express();
 app.use(morgan('combined'));
 app.use(compression());
 
-var index = fs.readFileSync(__dirname + '/static/index.html');
 app.get('/', function (req, res) {
-  res.end(index);
+	fs.readFile (__dirname + '/static/index.html', function(err, data){
+		if(err) {
+			return res.send(err).status (500); 
+		}
+		return res.end(data);
+
+	})
+  
 });
 
 app.use('/static', express.static(__dirname + '/static'));

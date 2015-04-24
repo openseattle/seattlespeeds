@@ -48,7 +48,7 @@ NDTmeter.prototype.create = function () {
     var width = d3.select(this.body_element).style("width").replace(/px/, '');
     var height = d3.select(this.body_element).style("height").replace(/px/, '');
     var twoPi = 2 * Math.PI;
-    var innerRad = (width * 0.30);
+    var innerRad = (width * 0.45);
     var outerRad = (width * 0.37);
 
     var svg = d3.select(this.body_element).append("svg")

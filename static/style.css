@@ -3,26 +3,27 @@ html, body {
   padding: 0;
 }
 
-header {
+.navbar {
   position: relative;
   padding-left: 100px;
   padding-top: 30px;
-  padding-bottom: 25px;
+  padding-bottom:;
   z-index: 2;
   background: rgba(255, 255, 255, 0.5);
 }
 
-header h1 {
+.navbar h1 {
   line-height: 1.0;
   font-family: sans-serif;
   font-weight: 100;
+  text-align: left;
 }
 
 section#test {
   position: relative;
   top: 0px;
   width: 300px;
-  background: rgba(255,255,255,0.5);
+  background:transparent;
   padding-left: 100px;
   z-index: 2;
 }
@@ -30,6 +31,8 @@ section#test {
 #testsvg {
   width: 300px;
   height: 300px;
+  background-color:blue; 
+
 }
 
 section#map-sec {
@@ -44,8 +47,5 @@ section#map-sec {
   height: 100%;
   width: 100%;
 }
-/*floating button*/
-#orangebutton{
-  background-image:url 
-}
+
 
