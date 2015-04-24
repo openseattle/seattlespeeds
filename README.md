@@ -14,3 +14,6 @@ Getting Started, run the following commande in your Terminal.
 - Finally start the Node server by running the command "node index.js"
 - A new window should have been prompted on your web browser, showing you the Seanetmap. Now using your preferred ide start writing some code!
 
+Additional resources.
+
+-  https://etherpad.net/p/Build_a_Broadband_map_for_Seattle
