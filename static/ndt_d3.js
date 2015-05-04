@@ -63,16 +63,16 @@ NDTmeter.prototype.create = function () {
         .append("linearGradient")
         .attr("id", "gradient")
         .attr("gradientUnits", "userSpaceOnUse");
-        
+
 
     gradient
         .append("stop")
         .attr("offset", "0")
-        .attr("stop-color", "##");
+        .attr("stop-color", "");
     gradient
         .append("stop")
         .attr("offset", "0.5")
-        .attr("stop-color", "##");
+        .attr("stop-color", "");
 
 
 
@@ -121,7 +121,7 @@ NDTmeter.prototype.onstatechange = function (returned_message) {
     this.state = returned_message;
     this.time_switched = new Date().getTime();
     this.update_display(this.NDT_STATUS_LABELS[returned_message], '');
-    
+
 };
 
 NDTmeter.prototype.onprogress = function (returned_message, passedResults) {
@@ -265,5 +265,3 @@ NDTmeter.prototype.meter_movement = function () {
 
     return false;
 };
-
-
