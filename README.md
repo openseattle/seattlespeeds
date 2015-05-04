@@ -14,7 +14,8 @@ to Seattle, yet it is a goal to make the codebase reusable in other localities.
 These instructions assume that [Node.js and npm](http://blog.nodeknockout.com/post/65463770933/how-to-install-node-js-and-npm) are installed on the dev machine.
 
 From the command line:
-- clone the repository:
+- clone the repository in one of the two normal ways, as you like:
+  - `git clone git@github.com:codeforseattle/seanetmap.git`
   - `git clone https://github.com/codeforseattle/seanetmap.git`	
 - `cd` into the repo just copied
 - `npm install` to install all of the necessary dependencies
@@ -22,7 +23,7 @@ From the command line:
 - `node server` to start the Node.js server
 - in a browser visit http://localhost:8000
 
-Further, more detailed information can be found in [the Developer process document](https://github.com/codeforseattle/seanetmap/wiki/Developer-process) on this project's wiki.
+Further, more detailed information can be found in the [Developer guide](https://github.com/codeforseattle/seanetmap/wiki/Developer-guide) page in this project's wiki.
 
 ## More info
 Check [the wiki](https://github.com/codeforseattle/seanetmap/wiki) for much more info.
