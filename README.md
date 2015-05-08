@@ -1,14 +1,23 @@
 # SEANetMap
-Broadband Comparison Tool for Seattle
+SEANetMap is web-based technology for communal situational awareness of the local broadband environment.
 
-SEANetMap is a join project between M-Labs and Code for Seattle with the goal of
-developing an open source codebase for citizens to run broadband network performance tests
-and compare their results with what others are experiencing across an area
-and/or network providers. The aggregate results dataset is publicly available
-as a social good for further analysis. Initially, the project will be specific
-to Seattle, yet it is a goal to make the codebase reusable in other localities.
+## Demo
+The code is demo'd live at http://broadbandtogether.com
 
+(Note that the domain name broadbandtogether.com has no official connotations associated with it. It is simply a domain at which to demo the code.)
 
+## Introduction
+
+SEANetMap is a joint project between M-Labs and Code for Seattle with the goal of
+
+- producing a liberally licensed, widely deployable, open source codebase for
+- crowdsourced broadband network performance test reports that
+- provides a community situation awareness of broadband network status within an area and/or network provider so that
+- individuals can compare their current and historical results with that of their fellow citizens
+
+The aggregate results dataset is publicly available as a social good for further analysis. 
+
+The code is being developed and deployed in Seattle first, yet it is a goal for the codebase to be easily redeployed for other localities.
 
 ## Getting started developing
 These instructions assume that [Node.js and npm](http://blog.nodeknockout.com/post/65463770933/how-to-install-node-js-and-npm) are installed on the dev machine.
