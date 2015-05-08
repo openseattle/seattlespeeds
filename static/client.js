@@ -6,7 +6,7 @@ var hexLayer, map;
 var startup = function () {
   // Create the map
   var center = [47.56029039903832,-122.33809844970702];
-  var zoom = 10;
+  var zoom = 11;
   map = L.map('map').setView(center, zoom);
 
   var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -42,11 +42,12 @@ function updateLayers(e, mode) {
 }
 
 function getHexColor(val) {
-    return val > 50 ? 'blue' :
-           val > 25 ? 'green' :
-           val > 10 ? 'purple' :
-           val > 5  ? 'yellow' :
-           val > 0  ? 'red' : 'transparent';
+    //As per CityReq2.2 https://github.com/codeforseattle/seanetmap/issues/39
+    return val > 50 ? '#008000' :
+           val > 25 ? '#24b323' :
+           val > 10 ? '#808000' :
+           val > 5  ? '#D00000' :
+           val > 0  ? '#ff0000' : 'transparent';
 }
 
 
@@ -64,6 +65,7 @@ function getLayerData (url, callback) {
 	}
 }
 
+// TODO: ensure caching is happeing, hopefully even pre-fetching. There was also talk of going to TopoJSON
 function setHexLayer(year, month, metric, resolution, mode) {
 	month = month < 10 ? '0' + month : month;
 	var hex_url = '/static/geojson/' + year + '_' + month + '-' + resolution + '.json';
