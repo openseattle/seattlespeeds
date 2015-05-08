@@ -30,7 +30,12 @@ var server = app.listen(8000, function () {
   var host = server.address().address;
   var port = server.address().port;
 
-  console.log('SeaNetMap app listening at http://%s:%s', host, port);
+  console.log('SEANetMap listening at http://%s:%s', host, port);
+  // TODO: need to mod this away from "listening at http:" when TLS is
+  // involved. Althought, in real-world deploy context SEANetMap will
+  // be behind proxies so it may well only be dealing with HTTP, not
+  // HTTPS
+
 });
 
 // Endpoint for saving test results
