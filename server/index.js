@@ -1,19 +1,21 @@
 'use strict';
 
+// "Constants":
+var LISTEN_PORT = 8000;
+var STATIC_DIR  = __dirname + '/../static';
+
 var compression = require('compression');
-var bodyParser = require('body-parser');
-var express = require('express');
-var db = require('./db').connect();
-var fs = require('fs');
-//
-var morgan = require('morgan');
+var bodyParser  = require('body-parser');
+var express     = require('express');
+var db          = require('./db').connect();
+var fs          = require('fs');
+var morgan      = require('morgan');
 
-var app = express();
-var STATIC_DIR = __dirname + '/../static';
-
+var app         = express();
 app.use(morgan('combined'));
 app.use(compression());
-app.use(bodyParser());
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
 
 // TODO: If behind proxy like nginx, enable trust proxy:
 // http://expressjs.com/guide/behind-proxies.html
@@ -26,16 +28,15 @@ app.get('/', function (req, res) {
 
 app.use('/static', express.static(STATIC_DIR));
 
-var server = app.listen(8000, function () {
+var server = app.listen(LISTEN_PORT, function () {
   var host = server.address().address;
   var port = server.address().port;
 
   console.log('SEANetMap listening at http://%s:%s', host, port);
   // TODO: need to mod this away from "listening at http:" when TLS is
-  // involved. Althought, in real-world deploy context SEANetMap will
-  // be behind proxies so it may well only be dealing with HTTP, not
-  // HTTPS
-
+  // involved. Although, in real-world deploy context SEANetMap will
+  // be behind proxies so it may well be only dealing with HTTP, not
+  // HTTPS...
 });
 
 // Endpoint for saving test results
