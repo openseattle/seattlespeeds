@@ -1,8 +1,6 @@
 'use strict';
 
-// "Constants":
-var LISTEN_PORT = 8000;
-var STATIC_DIR  = __dirname + '/../static';
+var config = require('./config');
 
 var compression = require('compression');
 var bodyParser  = require('body-parser');
@@ -21,14 +19,14 @@ app.use(bodyParser.json());
 // http://expressjs.com/guide/behind-proxies.html
 // app.enable('trust proxy')
 
-var index = fs.readFileSync(STATIC_DIR + '/index.html');
+var index = fs.readFileSync(config.STATIC_DIR + '/index.html');
 app.get('/', function (req, res) {
   res.end(index);
 });
 
-app.use('/static', express.static(STATIC_DIR));
+app.use('/static', express.static(config.STATIC_DIR));
 
-var server = app.listen(LISTEN_PORT, function () {
+var server = app.listen(config.LISTEN_PORT, function () {
   var host = server.address().address;
   var port = server.address().port;
 
