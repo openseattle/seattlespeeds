@@ -12,7 +12,7 @@ var morgan      = require('morgan');
 var app         = express();
 app.use(morgan('combined'));
 app.use(compression());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // TODO: If behind proxy like nginx, enable trust proxy:
