@@ -32,7 +32,7 @@ From the command line:
 - `node server` to start the Node.js server
 - in a browser visit http://localhost:8000
 
-Further, more detailed information can be found in the [Developer guide](https://github.com/codeforseattle/seanetmap/wiki/Developer-guide) page in this project's wiki.
+More detailed information can be found in the [Developer guide](https://github.com/codeforseattle/seanetmap/wiki/Developer-guide) page in this project's wiki.
 
 ## More info
 Check [the wiki](https://github.com/codeforseattle/seanetmap/wiki) for much more info.
