@@ -24,12 +24,20 @@
 
   <script src='/static/ndt-browser-client.js'></script>
   <script src='/static/welcome.js'></script>
-   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
-   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
+  <style type='text/css'>
+    /* added this to make things look the same when this page is loaded directly, or via iframe embedded. */
+    /* TODO: this is also set in /static/style.css so there is obviously room for clean-up optimization   */
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
 </head>
 <body>
   <nav class="navbar navbar-transparent ">
