@@ -65,7 +65,7 @@ function getLayerData (url, callback) {
 	}
 }
 
-// TODO: ensure caching is happeing, hopefully even pre-fetching. There was also talk of going to TopoJSON
+// TODO: ensure caching is happening, hopefully even pre-fetching. There was also talk of going to TopoJSON
 function setHexLayer(year, month, metric, resolution, mode) {
 	month = month < 10 ? '0' + month : month;
 	var hex_url = '/static/geojson/' + year + '_' + month + '-' + resolution + '.json';
