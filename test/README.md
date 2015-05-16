@@ -1,3 +1,4 @@
+
 # Mocha testing in SEANetMap
 
 The main test process documentation is at:  
@@ -24,15 +25,12 @@ See the following examples for how test will be done
 - https://github.com/JohnTigue/nodeio/tree/master/src/explorations/must
 - https://github.com/JohnTigue/nodeio/tree/master/src/explorations/sinon
 
-## Actual testing
-For performance all "statics" will be hosted on a CDN. This includes the JSON files (GeoJSON and TopoJSON).
-
 ### Seattle as test case
 One of the long term goals is to have this codebase be easily deployed anywhere, for any locality.
 As such it should not be Seattle specific in its core. 
 Seattle is simply the first place it is being deployed.
 In other words, Seattle can be seen as the test case and the broadband performance maps of Seattle as test data.
-As such those maps are parked here in a sub-directory called `seattle-perf-maps`.
+As such those maps are parked here in a sub-directory called `data/seattle-perf-maps/`.
 
 It takes some time to generate the maps so there a sample set pre-generated and included in the git repo
 so that folks can just clone the repo and then instantly run the server.
