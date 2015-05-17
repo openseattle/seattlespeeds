@@ -1,0 +1,87 @@
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#map {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.legend {
+	text-align: left;
+	line-height: 1;
+	font-size: 10px;
+	color: #555;
+}
+
+.legend br {
+	clear: left;
+}
+
+.legend i {
+	width: 10px;
+	height: 10px;
+	float: left;
+	margin: 0 5px 2px;
+	opacity: 0.5;
+}
+
+.info {
+	padding: 6px 8px;
+	background: white;
+	background: #fcfcfc;
+	box-shadow: 0 0 15px #7c7c7c;
+	border-radius: 5px;
+}
+
+#spinner {
+	display: none;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	top: 0;
+	z-index: 1 !important;
+	padding-top: 10em;
+}
+
+#spin {
+	margin: 0 auto;
+	width: 30px;
+	height: 30px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #BBB #999 #666 #222;
+	border-radius: 40px;
+	animation: spin 1s linear infinite; 
+}
+
+@keyframes spin {  
+	from { transform: rotate(0deg); }  
+	50%  { transform: rotate(180deg); }  
+	to   { transform: rotate(360deg); }  
+}		
+
+#loading {
+	margin: 10px auto;
+	font: 10pt sans-serif;
+	color: #222;
+	text-align: center;
+}
+
+.mapControls {
+	font-size: x-small;
+	margin: 0 5px;
+}
+
+#sliderMonth {
+	margin-top: 5px;
+	width: 25em;
+}
+
+#checkAnimate {
+	margin-top: 15px;
+}
