@@ -12,19 +12,29 @@ var morgan      = require('morgan');
 var app         = express();
 app.use(morgan('combined'));
 app.use(compression());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 // TODO: If behind proxy like nginx, enable trust proxy:
 // http://expressjs.com/guide/behind-proxies.html
 // app.enable('trust proxy')
 
+// JFT 2015-05-16 moving to new client struct: var index = fs.readFileSync(config.STATIC_DIR + '/index.html');
 var index = fs.readFileSync(config.STATIC_DIR + '/index.html');
 app.get('/', function (req, res) {
   res.end(index);
 });
+app.use('/client', express.static(config.STATIC_DIR));
+app.use('/json', express.static(config.PERF_MAPS_DIR));
 
-app.use('/static', express.static(config.STATIC_DIR));
+
+// This is just to test that the widget is embeddable in an iframe
+// TODO: this should really not be in here, rather part of some test machinery
+var embedder = fs.readFileSync(__dirname + '/../test/embedder.html');
+app.get('/embedder', function (req, res) {
+  res.end(embedder);
+});
+
 
 var server = app.listen(config.LISTEN_PORT, function () {
   var host = server.address().address;
@@ -36,6 +46,8 @@ var server = app.listen(config.LISTEN_PORT, function () {
   // be behind proxies so it may well be only dealing with HTTP, not
   // HTTPS...
 });
+
+
 
 // Endpoint for saving test results
 app.post('/test_results', function (req, res) {
@@ -52,7 +64,6 @@ app.post('/test_results', function (req, res) {
 // Endpoint for getting **all of the test results**
 app.get('/test_results', function (req, res) {
   db.getTestResults(function (err, rows) {
-
     if (err) {
       return res.status(500).send(err);
     }
