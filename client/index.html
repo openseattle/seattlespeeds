@@ -4,7 +4,10 @@
 
 <head>
 	<meta charset='utf-8' />
-	<title>M-Lab polygon-binned maps using Turf.js</title>
+	<title>SEANetMap</title>
+	    <!-- Stylesheet for ndt-javascript-client -->
+            <link rel="stylesheet" type="text/css" href="client/css/seanetmap.css"/>
+
 	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
 	<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.6/mapbox.css' rel='stylesheet' />
 
@@ -21,14 +24,21 @@
 </head>
 
 
-<body>
+<body onload="NDTmeter_setup()">
 
 <div id="spinner">
 	<div id="spin">&nbsp;</div>
 	<div id="loading">LOADING</div>
 </div>
 
+
 <div id='map'></div>
+
+<!-- For ndt-javascript-client -->
+<div id="container" style='position:absolute;top:10px;left:10px;'>
+  <div id="svg"></div>
+</div>
+
 
 <script>
 
@@ -148,5 +158,28 @@ if ( seedCache ) {
 </script>
 
 </body>
+
+<!--
+  Above here is pretty much straight out of bq2geojson repo
+  Below here is pretty much straight out of ndt-javascript-client
+  -->
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="client/libs/ndt-javascript-client/examples/d3_circle/ndt_d3.js"></script>
+<script src="client/libs/ndt-javascript-client/ndt-browser-client.js"></script>
+<script>
+  var server = "ndt.iupui.mlab1.nuq0t.measurement-lab.org";
+  var port = "3001";
+  var path = "/ndt_protocol";
+  var NDT_meter, NDT_client;
+            
+  function NDTmeter_setup() {
+    NDT_meter = new NDTmeter('#svg');
+    NDT_client = new NDTjs(server, port, path, NDT_meter, 1000);
+    NDT_meter.meter.on("click", function () {
+      NDT_client.startTest();
+      });
+    }
+</script>
 
 </html>
