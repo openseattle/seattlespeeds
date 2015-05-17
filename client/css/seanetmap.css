@@ -44,16 +44,20 @@
 	font-weight: bold;
 }
 #progress-meter text {
-	fill: rgb(2, 89, 157);
+        fill: rgb(255, 255, 255);
+/*	fill: rgb(2, 89, 157); */
 /*	fill: #2A333D; */
 }
 #progress-meter text.information {
 	font-size: 16px;
-	fill: rgb(2, 89, 157);
+        fill: rgb(255, 255, 255);
+
+/*	fill: rgb(2, 89, 157); */
 /*	fill: #6D736A; */
 }
 #progress-meter text.status{
-	fill: rgb(2, 89, 157);
+        fill: rgb(255, 255, 255);
+/*	fill: rgb(2, 89, 157); */
 /*	fill: #3F4D4D; */
 }
 #progress-meter .ready {
@@ -74,11 +78,14 @@
 
 #progress-meter .result_value, #progress-meter .result_label {
 	font-size: 14px;
-	fill: #707762;
+        fill: rgb(255, 255, 255);
+
+/*	fill: #707762;*/
 	/*text-transform:capitalize*/
 }
 #progress-meter .result_label {
-	fill: rgb(2, 89, 157);
+        fill: rgb(255, 255, 255);
+/*	fill: rgb(2, 89, 157); */
 /*	fill: #2A333D; 	*/
 }
 
