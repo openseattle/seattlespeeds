@@ -1,0 +1,33 @@
+SELECT
+  connection_spec.client_geolocation.latitude AS latitude,
+  connection_spec.client_geolocation.longitude AS longitude,
+  8 * (web100_log_entry.snap.HCThruOctetsAcked /
+        (web100_log_entry.snap.SndLimTimeRwin +
+         web100_log_entry.snap.SndLimTimeCwnd +
+         web100_log_entry.snap.SndLimTimeSnd)) AS download_throughput,
+  (web100_log_entry.snap.SumRTT /
+     web100_log_entry.snap.CountRTT) AS rtt_average
+FROM
+  [plx.google:m_lab.TABLENAME.all]
+WHERE
+  web100_log_entry.snap.SndLimTimeSnd IS NOT NULL
+  AND web100_log_entry.snap.SndLimTimeCwnd IS NOT NULL
+  AND web100_log_entry.snap.SndLimTimeRwin IS NOT NULL
+  AND web100_log_entry.snap.CountRTT > 0
+  AND project = 0
+  AND web100_log_entry.is_last_entry = True
+  AND connection_spec.data_direction = 1
+  AND web100_log_entry.snap.CongSignals > 0
+  AND web100_log_entry.snap.HCThruOctetsAcked >= 8192
+  AND (web100_log_entry.snap.State == 1
+    OR (web100_log_entry.snap.State >= 5
+        AND web100_log_entry.snap.State <= 11))
+  AND (web100_log_entry.snap.SndLimTimeRwin +
+       web100_log_entry.snap.SndLimTimeCwnd +
+       web100_log_entry.snap.SndLimTimeSnd) >= 9000000
+  AND (web100_log_entry.snap.SndLimTimeRwin +
+       web100_log_entry.snap.SndLimTimeCwnd +
+       web100_log_entry.snap.SndLimTimeSnd) < 3600000000
+  AND connection_spec.client_geolocation.country_code3 = '<country_code>'
+  AND connection_spec.client_geolocation.region = '<region_state>'
+  AND connection_spec.client_geolocation.city = '<city>'
