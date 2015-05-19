@@ -4,7 +4,7 @@
 
 <head>
 	<meta charset='utf-8' />
-	<title>SEANetMap</title>
+	<title>Seattle Broadband Map</title>
 	    <!-- Stylesheet for ndt-javascript-client -->
             <link rel="stylesheet" type="text/css" href="client/css/seanetmap.css"/>
 
@@ -181,5 +181,15 @@ if ( seedCache ) {
       });
     }
 </script>
+
+
+<!-- http://www.telize.com/ TODO: this should probably point to the SEANetServer when node-maxmind is up and running. This is only temp. -->
+<script type="application/javascript">
+  function getgeoip(json){
+    console.log('client.isp:', json.isp);
+    }
+</script>
+
+<script type="application/javascript" src="http://www.telize.com/geoip?callback=getgeoip"></script>
 
 </html>
