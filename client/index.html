@@ -183,13 +183,32 @@ if ( seedCache ) {
 </script>
 
 
+<!-- JFT-TODO: everything below here is just test that will probably be junked -->
+<script type='text/javascript' >
+  function onPositioned(position){
+    console.log('getCurrentPosition says: [' + position.coords.latitude + ', ' + position.coords.longitude + ']' );
+    }
+
+  function onError(){
+    console.log('getCurrentPostion errored');
+    }
+
+  if(!navigator.geolocation){
+    console.log('no navigator.geolocation');
+    }
+    else{
+      navigator.geolocation.getCurrentPosition(onPositioned, onError);
+      }
+</script>
+
+<!-- The following asks a service to lookup the client's ISProvider based on the client's IPAddr -->
 <!-- http://www.telize.com/ TODO: this should probably point to the SEANetServer when node-maxmind is up and running. This is only temp. -->
-<script type="application/javascript">
+<script type='text/javascript'>
   function getgeoip(json){
-    console.log('client.isp:', json.isp);
+    console.log('MaxMind says client.isp:', json.isp);
     }
 </script>
 
-<script type="application/javascript" src="http://www.telize.com/geoip?callback=getgeoip"></script>
+<script type='text/javascript' src='http://www.telize.com/geoip?callback=getgeoip'></script>
 
 </html>
