@@ -1,47 +1,54 @@
 <!DOCTYPE html>
-
 <html>
+  <head>
+    <meta charset='utf-8' />
+    <title>Seattle Broadband Map</title>
+    <!-- Stylesheet for ndt-javascript-client -->
+    <link rel="stylesheet" type="text/css" href="client/css/seanetmap.css"/>
 
-<head>
-	<meta charset='utf-8' />
-	<title>Seattle Broadband Map</title>
-	    <!-- Stylesheet for ndt-javascript-client -->
-            <link rel="stylesheet" type="text/css" href="client/css/seanetmap.css"/>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.6/mapbox.css' rel='stylesheet' />
 
-	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-	<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.6/mapbox.css' rel='stylesheet' />
-
-	<link href='client/libs/bq2geojson/css/mlab.css' rel='stylesheet' />
-	<link href="client/libs/bq2geojson/css/jquery-ui-slider-pips.css" rel="stylesheet" />
-	<link href='client/libs/bq2geojson/css/jquery-ui.min.css' rel='stylesheet' />
-	<script src='//api.tiles.mapbox.com/mapbox.js/v2.1.6/mapbox.js'></script>
-	<script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
-	<script src='client/libs/bq2geojson/js/mlab.js'></script>
-	<script src='client/libs/bq2geojson/js/center.js'></script>
-	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script src="client/libs/bq2geojson/js/jquery-ui.min.js"></script>
-	<script src="client/libs/bq2geojson/js/jquery-ui-slider-pips.min.js"></script>
-</head>
+    <link href='client/libs/bq2geojson/css/mlab.css' rel='stylesheet' />
+    <link href="client/libs/bq2geojson/css/jquery-ui-slider-pips.css" rel="stylesheet" />
+    <link href='client/libs/bq2geojson/css/jquery-ui.min.css' rel='stylesheet' />
+    <script src='//api.tiles.mapbox.com/mapbox.js/v2.1.6/mapbox.js'></script>
+    <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
+    <script src='client/libs/bq2geojson/js/mlab.js'></script>
+    <script src='client/libs/bq2geojson/js/center.js'></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="client/libs/bq2geojson/js/jquery-ui.min.js"></script>
+    <script src="client/libs/bq2geojson/js/jquery-ui-slider-pips.min.js"></script>
 
 
-<body onload="NDTmeter_setup()">
+<!-- As per https://github.com/domoritz/leaflet-locatecontrol 
+     TODO: "Only use rawgit for testing and never in production!"
+     -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="//rawgithub.com/domoritz/leaflet-locatecontrol/gh-pages/dist/L.Control.Locate.min.css" />
+<!--[if lt IE 9]>
+    <link rel="stylesheet" href="//rawgithub.com/domoritz/leaflet-locatecontrol/gh-pages/dist/L.Control.Locate.ie.min.css"/>
+<![endif]-->
 
-<div id="spinner">
-	<div id="spin">&nbsp;</div>
-	<div id="loading">LOADING</div>
-</div>
+<script src="//rawgithub.com/domoritz/leaflet-locatecontrol/gh-pages/dist/L.Control.Locate.min.js" ></script>
 
+  </head>
 
-<div id='map'></div>
+  <body onload="NDTmeter_setup()">
+    <div id="spinner">
+      <div id="spin">&nbsp;</div>
+      <div id="loading">LOADING</div>
+    </div>
 
-<!-- For ndt-javascript-client -->
-<div id="container" style='position:absolute;top:10px;left:10px;'>
-  <div id="svg"></div>
-</div>
+    <div id='map'></div>
+
+    <!-- For ndt-javascript-client -->
+    <div id="container" style='position:absolute;top:10px;left:10px;'>
+      <div id="svg"></div>
+    </div>
 
 
 <script>
-
 // If set to 'hex' then GeoJSON files are assumed to be named like
 // 'YYYY_MM-<resolution>.json', where 3 files exist for each of resolutions
 // 'low', 'medium', 'high'.  If anything other than 'hex', then this value is
@@ -133,6 +140,18 @@ var mapboxLayer = L.tileLayer(
 // Set the default base tile layer
 map.addLayer(mapboxLayer);
 
+// Provide a "you are here" UI
+var locatorOptions = {
+  position: 'topleft',
+  drawCircle: true,
+  keepCurrentZoomLevel: true
+  };
+
+var locator = L.control.locate(locatorOptions).addTo(map);
+$('.leaflet-control-locate').css('visibility', 'hidden');
+
+locator.start();
+
 // Add other base tile layer providers as needed
 var baseLayers = {
 	'OpenStreetMap': osmLayer,
@@ -157,7 +176,7 @@ if ( seedCache ) {
 }
 </script>
 
-</body>
+  </body>
 
 <!--
   Above here is pretty much straight out of bq2geojson repo
@@ -181,6 +200,9 @@ if ( seedCache ) {
       });
     }
 </script>
+
+
+
 
 
 <!-- JFT-TODO: everything below here is just test that will probably be junked -->
@@ -209,6 +231,8 @@ if ( seedCache ) {
     }
 </script>
 
-<script type='text/javascript' src='http://www.telize.com/geoip?callback=getgeoip'></script>
+<script type='text/javascript' src='http://www.telize.com/geoip?callback=getgeoip'>
+</script>
+
 
 </html>
