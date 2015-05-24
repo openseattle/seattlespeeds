@@ -115,6 +115,7 @@ function addControls() {
 	// the map.
 	$('#sliderMonth')
 		.slider({
+                        value: Number(dates[defaultYear][dates[defaultYear].length - 1]), // init to most recent month
 			min: Number(dates[defaultYear][0]),
 			max: Number(dates[defaultYear][dates[defaultYear].length - 1]),
 			change: function (e, ui) {
@@ -159,7 +160,8 @@ function updateLayers(e, mode) {
 		// way to do this, but for now just remove the onchange event function,
 		// change the value, then re-add it.
 		$('#sliderMonth').slider('option', 'change', function(){return false;});
-		$('#sliderMonth').slider('value', dates[year][0]);
+	        $('#sliderMonth').slider('value', dates[year][0]);
+		//$('#sliderMonth').slider('value', dates[year][dates[year].length - 1]); actually, no: the user has just selected a year so Jan makes sense, Dec not so much.
 		$('#sliderMonth').slider('option', 'change',
 			function(e, ui){ updateLayers(e, 'update')});
 
