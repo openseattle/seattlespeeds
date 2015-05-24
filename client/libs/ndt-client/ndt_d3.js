@@ -180,6 +180,9 @@ NDTmeter.prototype.onprogress = function (returned_message, passedResults) {
 };
 
 NDTmeter.prototype.onfinish = function (passed_results) {
+    $.post("/test_results",passed_results)
+      .done(function() { console.log('posting results succeeded')})
+      .fail(function() { console.log('posting results failed')});
     var result_string,
         dy_current,
         metric_name;
