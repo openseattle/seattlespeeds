@@ -9,17 +9,21 @@ var db          = require('./db').connect();
 var fs          = require('fs');
 var morgan      = require('morgan');
 
+// Internet Service Provider (ISP) lookup
+var maxmind = require('maxmind');
+maxmind.init(config.MAXMIND_ISP_DB_FILENAME);
+
 var app         = express();
 app.use(morgan('combined'));
 app.use(compression());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-// TODO: If behind proxy like nginx, enable trust proxy:
-// http://expressjs.com/guide/behind-proxies.html
-// app.enable('trust proxy')
+// See http://expressjs.com/guide/behind-proxies.html
+if(config.IS_BEHIND_PROXY){
+  app.enable('trust proxy');
+}
 
-// JFT 2015-05-16 moving to new client struct: var index = fs.readFileSync(config.STATIC_DIR + '/index.html');
 var index = fs.readFileSync(config.STATIC_DIR + '/index.html');
 app.get('/', function (req, res) {
   res.end(index);
@@ -79,3 +83,11 @@ app.get('/test_results', function (req, res) {
     return res.send(response);
   });
 });
+
+// Endpoint for letting the client know which ISProvider it is being serviced by
+app.get('/services/wtfismyisp', function (req, res) {
+  return res.send(maxmind.getIsp(req.ip));
+});
+
+
+
