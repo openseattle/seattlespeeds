@@ -1,5 +1,5 @@
 # SEANetMap
-SEANetMap is web-based technology for communal situational awareness of the local broadband environment.
+SEANetMap is web-based technology for communal situational awareness of the broadband network environment.
 
 ## Demo
 The code is demo'd live at http://broadbandtogether.com
