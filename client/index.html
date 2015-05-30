@@ -146,11 +146,11 @@ var locatorOptions = {
   drawCircle: true,
   keepCurrentZoomLevel: true
   };
-
 var locator = L.control.locate(locatorOptions).addTo(map);
+// The control has a UI for "start locating me" but we want this to happen from the get-go so no reason to show extra UI
 $('.leaflet-control-locate').css('visibility', 'hidden');
-
 locator.start();
+
 
 // Add other base tile layer providers as needed
 var baseLayers = {
