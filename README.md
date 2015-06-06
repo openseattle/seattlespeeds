@@ -2,9 +2,9 @@
 SEANetMap is web-based technology for communal situational awareness of the broadband network environment.
 
 ## Demo
-The code is demo'd live at http://broadbandtogether.com
+The code is demo'd live at http://seattlegig.net
 
-(Note that the domain name broadbandtogether.com has no official connotations associated with it. It is simply a domain at which to demo the code.)
+(Note that the domain name seattlegig.net has no official connotations associated with it. It is simply a domain at which to demo the code.)
 
 ## Introduction
 
