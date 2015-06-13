@@ -11,7 +11,7 @@ var morgan      = require('morgan');
 
 // Internet Service Provider (ISP) lookup
 var maxmind = require('maxmind');
-maxmind.init(config.MAXMIND_ISP_DB_FILENAME);
+//maxmind.init(config.MAXMIND_ISP_DB_FILENAME);
 
 var app         = express();
 app.use(morgan('combined'));
@@ -86,7 +86,10 @@ app.get('/test_results', function (req, res) {
 
 // Endpoint for letting the client know which ISProvider it is being serviced by
 app.get('/services/wtfismyisp', function (req, res) {
-  return res.send(maxmind.getIsp(req.ip));
+console.log('Hi');
+console.log("174.21.189.66"+":"+maxmind.getIsp('66.6.44.4'));
+  return res.send(maxmind.getIsp('66.6.44.4'));
+//  return res.send(maxmind.getIsp(req.ip));
 });
 
 
