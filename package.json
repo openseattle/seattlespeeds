@@ -34,6 +34,7 @@
     "leaflet.locatecontrol": "^0.42.0",
     "maxmind": "^0.5.5",
     "morgan": "^1.5.2",
+    "seattle-boundaries": "codeforseattle/seattle-boundaries",
     "sqlite3": "^3.0.5",
     "superagent-bluebird-promise": "^2.0.1",
     "topojson": "^1.6.19",
