@@ -24,19 +24,19 @@ These instructions assume that [Node.js and npm](http://blog.nodeknockout.com/po
 
 From the command line:
 - clone the repository in one of the two normal ways, as you like:
-  - `git clone git@github.com:codeforseattle/seanetmap.git`
-  - `git clone https://github.com/codeforseattle/seanetmap.git`	
+  - `git clone git@github.com:openseattle/seanetmap.git`
+  - `git clone https://github.com/openseattle/seanetmap.git`	
 - `cd` into the repo just copied
 - `npm install` to install all of the necessary dependencies
 - `./setup-db.js` to create a sqlite database in `db/`
 - `node server` to start the Node.js server
 - in a browser visit http://localhost:8000
 
-More detailed information can be found in the [Developer guide](https://github.com/codeforseattle/seanetmap/wiki/Developer-guide) page in this project's wiki.
+More detailed information can be found in the [Developer guide](https://github.com/openseattle/seanetmap/wiki/Developer-guide) page in this project's wiki.
 
 ## More info
-Check [the wiki](https://github.com/codeforseattle/seanetmap/wiki) for much more info.
+Check [the wiki](https://github.com/openseattle/seanetmap/wiki) for much more info.
 
-[The deployment guide](https://github.com/codeforseattle/seanetmap/wiki/Deployment-guide) 
+[The deployment guide](https://github.com/openseattle/seanetmap/wiki/Deployment-guide) 
 is intended for people interested in deploying the codebase, without necessarily contributing new code
 to the project.
